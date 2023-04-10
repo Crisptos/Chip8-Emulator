@@ -7,7 +7,6 @@
 int main()
 {
     sf::RenderWindow window({ 640, 480 }, "CHIP8", sf::Style::Default, sf::ContextSettings(0, 0, 8));
-  
 
     while (window.isOpen()) {
         sf::Event event;
