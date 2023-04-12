@@ -1,5 +1,5 @@
-﻿  main.cpp
+﻿  chip8.cpp
+  main.cpp
   memory.cpp
-  screen.cpp
   Generating Code...
   test.vcxproj -> C:\Users\CMarkakis\source\repos\Chip8-Emulator\Debug\test.exe
