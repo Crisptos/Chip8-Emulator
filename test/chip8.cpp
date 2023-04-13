@@ -4,21 +4,22 @@ Chip8::Chip8() {
     s = new Screen();
     m = new Memory();
     r = new Registers();
-
+    std::cout << "Loaded default sprites to memory..." << std::endl;
+    
+    memcpy(m->memory, DEFAULT_SPRITE, sizeof(DEFAULT_SPRITE));
 }
 
 Chip8::~Chip8() {
-    delete[] s;
-    delete[] m;
-    delete[] r;
+    delete s;
+    delete m;
+    delete r;
 }
 
 void Chip8::run() {
 
     sf::RenderWindow window({SCREEN_WIDTH, SCREEN_HEIGHT}, "Chip8 Emulator", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 
-    s->draw(0,0);
-    s->draw(1,1);
+    s->drawSprite(0, 0, &m->memory[0x28], 5);
 
     while (window.isOpen()) {
         window.clear(sf::Color::Black);
@@ -49,7 +50,7 @@ void Chip8::render(sf::RenderWindow* window) {
             if (s->pixelBuffer[y][x] == 1) {
                 sf::RectangleShape pixel;
                 pixel.setSize(sf::Vector2f(10.0, 10.0));
-                pixel.setPosition(y*RES_MULTIPLIER, x*RES_MULTIPLIER);
+                pixel.setPosition(x*RES_MULTIPLIER, y*RES_MULTIPLIER);
                 window->draw(pixel);
             }
         }

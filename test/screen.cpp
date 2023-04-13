@@ -17,6 +17,22 @@ bool Screen::drawBounds(int y, int x) {
 	return true;
 }
 
+bool Screen::drawSprite(int y, int x, const u8 SPRITE[], int n) {
+
+	bool pixel_clipped = false;
+
+	for (int ly = 0; ly < n; ly++) {
+		char s = SPRITE[ly];
+		for (int lx = 0; lx < 8; lx++) {
+			if ((s & (0b10000000 >> lx)) == 0)
+				continue;
+			pixelBuffer[ly + y][lx + x] = 1;
+		}
+	}
+
+	return false;
+}
+
 Screen::~Screen() {
 
 }

@@ -1,7 +1,4 @@
 ﻿  chip8.cpp
-C:\Users\barat\OneDrive\Documents\SFML Projects\Chip8-Emulator\test\chip8.cpp(52,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\barat\OneDrive\Documents\SFML Projects\Chip8-Emulator\test\chip8.cpp(52,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-  screen.cpp
-  Generating Code...
-  test.vcxproj -> C:\Users\barat\OneDrive\Documents\SFML Projects\Chip8-Emulator\Debug\test.exe
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(53,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(53,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  test.vcxproj -> C:\Users\CMarkakis\source\repos\Chip8-Emulator\Debug\test.exe
