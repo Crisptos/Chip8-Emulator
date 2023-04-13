@@ -4,4 +4,5 @@ int main()
 {
     Chip8 chip8vm;
     chip8vm.run();
+    chip8vm.~Chip8();
 }

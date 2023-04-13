@@ -13,4 +13,5 @@ public:
 	void draw(int y, int x) { if(drawBounds(y,x)) pixelBuffer[y][x] = 1; }
 	int isDrawn(int y, int x) { if(drawBounds(y,x)) return pixelBuffer[y][x]; }
 	bool drawBounds(int y, int x);
+	~Screen();
 };

@@ -14,9 +14,9 @@ private:
 
 public:
 
-	Memory m;
-	Registers r;
-	Screen s;
+	Memory* m;
+	Registers* r;
+	Screen* s;
 
 	Chip8();
 	void run();
