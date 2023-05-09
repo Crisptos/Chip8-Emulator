@@ -1,4 +1,28 @@
-﻿  chip8.cpp
-C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(53,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(53,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  test.vcxproj -> C:\Users\CMarkakis\source\repos\Chip8-Emulator\Debug\test.exe
+﻿  loader.cpp
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\loader.cpp(14,28): warning C4244: 'argument': conversion from 'std::streamoff' to 'const unsigned int', possible loss of data
+  main.cpp
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\registers.h(10,2): warning C4091: 'typedef ': ignored on left of 'Registers' when no variable is declared
+  chip8.cpp
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\registers.h(10,2): warning C4091: 'typedef ': ignored on left of 'Registers' when no variable is declared
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(11,29): error C2679: binary '=': no operator found which takes a right-hand operand of type 'std::vector<u16,std::allocator<sf::Uint16>>' (or there is no acceptable conversion)
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\xstring(3304,32): message : could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\xstring(3296,32): message : or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\xstring(3244,32): message : or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\xstring(3169,32): message : or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\xstring(3054,32): message : or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(11,29): message : while trying to match the argument list '(std::string, std::vector<u16,std::allocator<sf::Uint16>>)'
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(54,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(54,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...

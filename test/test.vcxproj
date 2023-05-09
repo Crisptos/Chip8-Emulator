@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory.cpp" />
     <ClCompile Include="chip8.cpp" />
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="chip8.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="loader.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="registers.h" />
     <ClInclude Include="screen.h" />

@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include <vector>
 
 #include "memory.h"
 #include "registers.h"
 #include "screen.h"
+#include "loader.h"
 
 class Chip8 {
 
@@ -36,6 +36,7 @@ public:
 	Memory* m;
 	Registers* r;
 	Screen* s;
+	std::string ROM;
 
 	Chip8();
 	void run();

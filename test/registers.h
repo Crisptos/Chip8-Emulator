@@ -1,15 +1,10 @@
 #pragma once
 #include "config.h"
 
-class Registers {
 
-public:
-	u8 V[0x10];	// general purpose register, Chip8 uses v[0] - v[f].
-			// v[f] should not be used by any program and only works as a flag
-			// for some instructions
-
-	u16 I;	// used for memory addresses
-	u16 pc;	// program counter register
-	u8 sp;	// stack pointer register
-
+typedef struct Registers {
+	u8 V[0x10];
+	u16 I;
+	u16 pc;
+	u8 sp;
 };
