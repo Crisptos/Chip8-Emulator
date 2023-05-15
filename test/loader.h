@@ -14,7 +14,7 @@ class Loader {
 public:
 
 	Loader(std::string filepath);
-	std::vector<u16> getROM();
+	std::vector<u8> getROM();
 
-	std::vector<u16> ROMsource;
+	std::vector<u8> ROMsource;
 };

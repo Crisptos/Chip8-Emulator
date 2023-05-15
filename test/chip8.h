@@ -36,7 +36,7 @@ public:
 	Memory* m;
 	Registers* r;
 	Screen* s;
-	std::string ROM;
+	std::vector<u8> ROM;
 
 	Chip8();
 	void run();

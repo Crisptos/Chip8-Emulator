@@ -26,7 +26,7 @@ bool Screen::drawSprite(int y, int x, const u8 SPRITE[], int n) {
 		for (int lx = 0; lx < 8; lx++) {
 			if ((s & (0b10000000 >> lx)) == 0)
 				continue;
-			pixelBuffer[ly + y][lx + x] = 1;
+			pixelBuffer[(ly + y)%SCREEN_HEIGHT][(lx + x)%SCREEN_WIDTH] = 1;
 		}
 	}
 

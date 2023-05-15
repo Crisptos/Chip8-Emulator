@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="chip8.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="keyboard.h" />
     <ClInclude Include="loader.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="registers.h" />

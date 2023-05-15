@@ -4,11 +4,14 @@ Chip8::Chip8() {
     s = new Screen();
     m = new Memory();
     r = new Registers;
-    std::cout << "Loaded default sprites to memory..." << std::endl;
+
+    std::cout << "Loading default sprites to memory..." << std::endl;
     memcpy(m->memory, DEFAULT_SPRITE, sizeof(DEFAULT_SPRITE));
 
+    std::cout << "Loading ROM..." << std::endl;
     Loader ROMloader("C:/Users/CMarkakis/source/repos/Chip8-Emulator/test/chip8-roms-master/games/Space-Invaders-[David Winter]-(alt).ch8");
     ROM = ROMloader.getROM();
+    memcpy(&m->memory[0x200], ROM.data(), ROM.size());
 }
 
 Chip8::~Chip8() {
@@ -21,7 +24,6 @@ Chip8::~Chip8() {
 void Chip8::run() {
 
     sf::RenderWindow window({SCREEN_WIDTH, SCREEN_HEIGHT}, "Chip8 Emulator", sf::Style::Default, sf::ContextSettings(0, 0, 8));
-    std::cout << ROM << std::endl;
     while (window.isOpen()) {
         window.clear(sf::Color::Black);
 
@@ -40,7 +42,6 @@ void Chip8::input(sf::RenderWindow* window) {
             case sf::Event::Closed:
                 window->close();
                 break;
-
         }
     }
 }
