@@ -1,4 +1,10 @@
 #pragma once
+
+/** 
+	This class represents the active memory of the Chip8. Memory is stored in an array of 8 bit values
+	Includes Getters and Setters that check index bounds
+*/
+
 #include "config.h"
 
 class Memory {

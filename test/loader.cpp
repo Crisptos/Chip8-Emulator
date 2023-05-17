@@ -1,5 +1,10 @@
 #include "loader.h"
 
+/**
+	This class loads the raw hex data from the specific file and
+	returns it to the Chip8 class as a ROM ready to write to memory
+*/
+
 Loader::Loader(std::string filepath) {
 	std::ifstream ROM(filepath);
 	u8 byte;

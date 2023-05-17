@@ -26,11 +26,19 @@ bool Screen::drawSprite(int y, int x, const u8 SPRITE[], int n) {
 		for (int lx = 0; lx < 8; lx++) {
 			if ((s & (0b10000000 >> lx)) == 0)
 				continue;
-			pixelBuffer[(ly + y)%SCREEN_HEIGHT][(lx + x)%SCREEN_WIDTH] = 1;
+			pixelBuffer[(ly + y)%32][(lx + x)%64] = 1;
 		}
 	}
 
 	return false;
+}
+
+void Screen::screenClear() {
+	for (int y = 0; y < SCREEN_HEIGHT / RES_MULTIPLIER; y++) {
+		for (int x = 0; x < SCREEN_WIDTH / RES_MULTIPLIER; x++) {
+			pixelBuffer[y][x] = 0;
+		}
+	}
 }
 
 Screen::~Screen() {

@@ -1,16 +1,24 @@
 #pragma once
+
+/** 
+	This class is the main application loop of the Chip8. Handles calling everything the VM needs
+	such as opcode execution, calls to render to the screen and memory retrieval
+*/
+
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <stack>
 
 #include "memory.h"
 #include "registers.h"
 #include "screen.h"
 #include "loader.h"
+#include "keyboard.h"
 
 class Chip8 {
 
 private:
-
+	// Default character set of the Chip8
 	const u8 DEFAULT_SPRITE[80] = {
 		0xF0,0x90,0x90,0x90,0xF0,	// 0
 		0x20,0x60,0x20,0x20,0x70,	// 1
@@ -33,15 +41,20 @@ private:
 
 public:
 
-	Memory* m;
-	Registers* r;
-	Screen* s;
-	std::vector<u8> ROM;
+	Memory* m;		// Chip8 Memory Class instance
+	Registers* r;	// Chip8 Registers struct instance
+	Keyboard* k;	// Chip8 Keyboard Struct Instance
+	Screen* s;		// Chip8 Screen Class Instance
+	std::stack<u16> stack;	// General use call stack
+	std::vector<u8> ROM;	// ROM that gets loaded into memory
 
 	Chip8();
 	void run();
 	void input(sf::RenderWindow* window);
 	void render(sf::RenderWindow* window);
+	u16 getOp();
+	void processOp(u16 opcode);
+	void processOp8(u16 opcode);
 	~Chip8();
 
 };

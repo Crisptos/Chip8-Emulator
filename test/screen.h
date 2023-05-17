@@ -14,5 +14,6 @@ public:
 	int isDrawn(int y, int x) { if(drawBounds(y,x)) return pixelBuffer[y][x]; }
 	bool drawBounds(int y, int x);
 	bool drawSprite(int y, int x, const u8 SPRITE[], int n);
+	void screenClear();
 	~Screen();
 };
