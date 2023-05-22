@@ -26,11 +26,14 @@ bool Screen::drawSprite(int y, int x, const u8 SPRITE[], int n) {
 		for (int lx = 0; lx < 8; lx++) {
 			if ((s & (0b10000000 >> lx)) == 0)
 				continue;
-			pixelBuffer[(ly + y)%32][(lx + x)%64] = 1;
+			if (pixelBuffer[(ly + y) % 32][(lx + x) % 64] == 1)
+				pixel_clipped = true;
+
+			pixelBuffer[(ly + y)%32][(lx + x)%64] ^= 1;
 		}
 	}
 
-	return false;
+	return pixel_clipped;
 }
 
 void Screen::screenClear() {
