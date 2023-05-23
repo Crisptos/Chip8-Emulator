@@ -15,7 +15,7 @@ Chip8::Chip8() {
     memcpy(m->memory, DEFAULT_SPRITE, sizeof(DEFAULT_SPRITE));
 
     std::cout << "Loading ROM..." << std::endl;
-    Loader ROMloader("C:/Users/CMarkakis/source/repos/Chip8-Emulator/test/chip8-roms-master/games/Breakout [Carmelo Cortez, 1979].ch8");
+    Loader ROMloader("C:/Users/CMarkakis/source/repos/Chip8-Emulator/test/chip8-roms-master/games/Space Invaders [David Winter].ch8");
     ROM = ROMloader.getROM();
     memcpy(&m->memory[0x200], ROM.data(), ROM.size());
 
@@ -44,7 +44,7 @@ void Chip8::run() {
         window.display();
 
         std::cout << std::hex << getOp() << std::endl;
-        processOp(getOp());
+        processOp(getOp(), &window);
         r->pc += 2;
     }
 }
@@ -57,6 +57,57 @@ void Chip8::input(sf::RenderWindow* window) {
             case sf::Event::Closed:
                 window->close();
                 break;
+            case sf::Event::KeyReleased:
+                switch (event.key.code) {
+                    case sf::Keyboard::Num1:
+                        k->keys[0x1] = false;
+                        break;
+                    case sf::Keyboard::Num2:
+                        k->keys[0x2] = false;
+                        break;
+                    case sf::Keyboard::Num3:
+                        k->keys[0x3] = false;
+                        break;
+                    case sf::Keyboard::Num4:
+                        k->keys[0x4] = false;
+                        break;
+                    case sf::Keyboard::Num5:
+                        k->keys[0x5] = false;
+                        break;
+                    case sf::Keyboard::Num6:
+                        k->keys[0x6] = false;
+                        break;
+                    case sf::Keyboard::Num7:
+                        k->keys[0x7] = false;
+                        break;
+                    case sf::Keyboard::Num8:
+                        k->keys[0x8] = false;
+                        break;
+                    case sf::Keyboard::Num9:
+                        k->keys[0x9] = false;
+                        break;
+                    case sf::Keyboard::Q:
+                        k->keys[0xA] = false;
+                        break;
+                    case sf::Keyboard::W:
+                        k->keys[0xB] = false;
+                        break;
+                    case sf::Keyboard::E:
+                        k->keys[0xC] = false;
+                        break;
+                    case sf::Keyboard::R:
+                        k->keys[0xD] = false;
+                        break;
+                    case sf::Keyboard::T:
+                        k->keys[0xE] = false;
+                        break;
+                    case sf::Keyboard::Y:
+                        k->keys[0xF] = false;
+                        break;
+                    case sf::Keyboard::Num0:
+                        k->keys[0x0] = false;
+                        break;
+                }
         }
     }
 }
@@ -80,7 +131,7 @@ u16 Chip8::getOp() {
     return byte1 << 8 | byte2;
 }
 
-void Chip8::processOp(u16 opcode) {
+void Chip8::processOp(u16 opcode, sf::RenderWindow* window) {
     
     // This switch statement will handle any opcodes that don't take arguments
     switch (opcode) {
@@ -227,7 +278,7 @@ void Chip8::processOp(u16 opcode) {
             u8 x = (opcode & 0x0F00) >> 8;
             u8 y = (opcode & 0x00F0) >> 4;
             u8 n = (opcode & 0x000F);
-            if (s->drawSprite(r->V[y], r->V[x], m->getMem(r->I), n))
+            if (s->drawSprite(r->V[y], r->V[x], &m->memory[r->I], n))
                 r->V[0xF] = 1;
             else {
                 r->V[0xF] = 0;
@@ -243,9 +294,168 @@ void Chip8::processOp(u16 opcode) {
         case 0xE09E:
         {
             u8 x = (opcode & 0x0F00) >> 8;
-            
+
             if (k->keys[r->V[x]])
                 r->pc += 2;
+            break;
+        }
+
+        // SKNP V[x] - ExA1 - Skip next instruction if key with the value of V[x] is not pressed.
+        case 0xE0A1:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+
+            if (!k->keys[r->V[x]])
+                r->pc += 2;
+            break;
+        }
+
+        // LD V[x] - Fx07 - Set Vx = delay timer value.
+        case 0xF007:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+
+            r->V[x] = r->delay;
+            break;
+        }
+
+        // LD V[x] - Fx0A - Wait for a key press, store the value of the key in Vx.
+        // All execution stops until a key is pressed, then the value of that key is stored in Vx.
+        case 0xF00A:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            
+            sf::Event event;
+            while (window->waitEvent(event)) {
+                switch (event.type) {
+
+                    case sf::Event::KeyPressed:
+                        switch (event.key.code) {
+                            case sf::Keyboard::Num1:
+                                k->keys[0x1] = true;
+                                break;
+                            case sf::Keyboard::Num2:
+                                k->keys[0x2] = true;
+                                break;
+                            case sf::Keyboard::Num3:
+                                k->keys[0x3] = true;
+                                break;
+                            case sf::Keyboard::Num4:
+                                k->keys[0x4] = true;
+                                break;
+                            case sf::Keyboard::Num5:
+                                k->keys[0x5] = true;
+                                break;
+                            case sf::Keyboard::Num6:
+                                k->keys[0x6] = true;
+                                break;
+                            case sf::Keyboard::Num7:
+                                k->keys[0x7] = true;
+                                break;
+                            case sf::Keyboard::Num8:
+                                k->keys[0x8] = true;
+                                break;
+                            case sf::Keyboard::Num9:
+                                k->keys[0x9] = true;
+                                break;
+                            case sf::Keyboard::Q:
+                                k->keys[0xA] = true;
+                                break;
+                            case sf::Keyboard::W:
+                                k->keys[0xB] = true;
+                                break;
+                            case sf::Keyboard::E:
+                                k->keys[0xC] = true;
+                                break;
+                            case sf::Keyboard::R:
+                                k->keys[0xD] = true;
+                                break;
+                            case sf::Keyboard::T:
+                                k->keys[0xE] = true;
+                                break;
+                            case sf::Keyboard::Y:
+                                k->keys[0xF] = true;
+                                break;
+                            case sf::Keyboard::Num0:
+                                k->keys[0x0] = true;
+                                break;
+                        }
+                        break;
+                }
+            }
+            break;
+        }
+
+        // LD DT - Fx15 - Set delay timer = V[x] value.
+        case 0xF015:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            r->delay = r->V[x];
+            break;
+        }
+
+        // LD ST - Fx18 - Set sound timer = V[x] value.
+        case 0xF018:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            r->sound = r->V[x];
+            break;
+        }
+
+        // ADD I, V[x] - Fx1E - Set I = I + V[x]
+        case 0xF01E:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            r->I += r->V[x];
+            break;
+        }
+
+        // LD F, V[x] - Fx29 - Set I = location of sprite for digit V[x]
+        case 0xF029:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            r->I = r->V[x];
+            break;
+        }
+
+        // LD B, V[x] - Fx33 - Store BCD representation of V[x] in memory locations I, I+1, and I+2.
+        // The interpreter takes the decimal value of V[x], and places the hundreds digit in memory at location in I, the tens digit at location I+1, and the ones digit at location I+2.
+        case 0xF033:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            
+            u8 hundreds = r->V[x] / 100;
+            u8 tens = r->V[x] / (10%10);
+            u8 ones = r->V[x] % 10;
+
+            m->setMem(r->I, hundreds);
+            m->setMem(r->I+1, tens);
+            m->setMem(r->I+2, ones);
+
+            break;
+        }
+
+        // LD I, V[x] - Fx55 - Store registers V0 through Vx in memory starting at location I.
+        case 0xF055:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+            
+            for (u8 i = 0; i <= x; i++) {
+                m->setMem(r->I+i, r->V[i]);
+            }
+
+            break;
+        }
+
+        // LD I, V[x] - Fx65 - Read registers V0 through Vx from memory starting at location I.
+        case 0xF065:
+        {
+            u8 x = (opcode & 0x0F00) >> 8;
+
+            for (u8 i = 0; i <= x; i++) {
+                r->V[i] = m->getMem(r->I+i);
+            }
+
             break;
         }
 

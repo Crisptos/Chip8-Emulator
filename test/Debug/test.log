@@ -2,8 +2,9 @@
 C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\registers.h(17,2): warning C4091: 'typedef ': ignored on left of 'Registers' when no variable is declared
 C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\keyboard.h(5,2): warning C4091: 'typedef ': ignored on left of 'Keyboard' when no variable is declared
 C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(23,25): warning C4267: '=': conversion from 'size_t' to 'u8', possible loss of data
-C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(70,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(70,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(219,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(121,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(121,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(270,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\chip8.cpp(428): warning C4723: potential divide by 0
 C:\Users\CMarkakis\source\repos\Chip8-Emulator\test\memory.h(16): warning C4715: 'Memory::getMem': not all control paths return a value
   test.vcxproj -> C:\Users\CMarkakis\source\repos\Chip8-Emulator\Debug\test.exe

@@ -53,7 +53,7 @@ public:
 	void input(sf::RenderWindow* window);
 	void render(sf::RenderWindow* window);
 	u16 getOp();
-	void processOp(u16 opcode);
+	void processOp(u16 opcode, sf::RenderWindow* window);
 	void processOp8(u16 opcode);
 	~Chip8();
 
